@@ -15,6 +15,7 @@ const ItemDay = (props) => {
 
     const dispatch = useDispatch();
     const currentPage = useSelector(state => state.themeStates.page);
+    const currentDegrees = useSelector(state => state.themeStates.degrees);
 
     const [status, setStatus] = useState(false);
 
@@ -46,7 +47,11 @@ const ItemDay = (props) => {
                         <div style={{color: `${props.color}`}}>
                             <div className={styles.description}>
                                 <h4>{props.dayOfWeek}</h4>
-                                <h3>{props.minTempC}&#8451; - {props.maxTempC}&#8451;</h3>
+                                {(currentDegrees === 'fahrenheit')?(
+                                    <h3>{props.minTempF}&#8457; - {props.maxTempF}&#8457;</h3>
+                                ):(
+                                    <h3>{props.minTempC}&#8451; - {props.maxTempC}&#8451;</h3>
+                                )}
                             </div>
                             <div className={styles.description}>
                                 <p><FontAwesomeIcon icon={faSun}/> : {props.day}</p>
@@ -70,13 +75,17 @@ const ItemDay = (props) => {
                     {(status) ? (
                         <div className={styles.description} style={{color: 'white'}}>
                             <h4>{props.dayOfWeek}</h4>
-                            <h3>{props.minTempF}&#8457; - {props.maxTempF}&#8457;</h3>
+                            <h3>{props.currentWeatherText}</h3>
                         </div>
                     ) : (
                         <div style={{color: `${props.color}`}}>
                             <div className={styles.description}>
                                 <h4>{props.dayOfWeek}</h4>
-                                <h3>{props.minTempC}&#8451; - {props.maxTempC}&#8451;</h3>
+                                {(currentDegrees === 'fahrenheit')?(
+                                    <h3>{props.minTempF}&#8457; - {props.maxTempF}&#8457;</h3>
+                                ):(
+                                    <h3>{props.minTempC}&#8451; - {props.maxTempC}&#8451;</h3>
+                                )}
                             </div>
                             <div className={styles.description}>
                                 <p><FontAwesomeIcon icon={faSun}/> : {props.day}</p>
@@ -92,12 +101,17 @@ const ItemDay = (props) => {
             <div className={styles.wrapper} style={{backgroundColor: `${props.background}`}}>
                 <div className={styles.description} style={{color: `${props.color}`}}>
                     <h3>{props.city}</h3>
-                    <h4>{props.tempC}&#8451;</h4>
+                    {(currentDegrees === 'fahrenheit')?(
+                        <h4>{props.tempF}&#8457;</h4>
+                    ):(
+                        <h4>{props.tempC}&#8451;</h4>
+                    )}
                     <h4>{props.weatherText}</h4>
                     <NavLink to='/'>
                         <Button variant="outline-light" className={styles.btn} onClick={() => getChooseLocation(props.city,'/')}>see more</Button>
                     </NavLink>
                 </div>
+                <span className={styles.id} style={{color: `${props.color}`}}>{props.index + 1}</span>
             </div>
         )
     }

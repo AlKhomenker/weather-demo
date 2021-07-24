@@ -1,10 +1,11 @@
-import {SET_THEME, SET_NEW_URL} from '../types'
+import {SET_THEME, SET_NEW_URL,SET_NEW_DEGREE_SYSTEM} from '../types'
 
 const localStorage = window.localStorage;
 
 const defaultState = {
     theme:  localStorage.getItem('localTheme'),
-    page: ''
+    page: '',
+    degrees: 'fahrenheit'
 };
 
 
@@ -18,6 +19,10 @@ export const setNewPageUrl = (page) => ({
     payload: page
 });
 
+export const setNewDegreeSystem = (degree) => ({
+    type: SET_NEW_DEGREE_SYSTEM,
+    payload: degree
+});
 
 export default function themeReducer(state= defaultState, action){
     switch (action.type) {
@@ -30,6 +35,11 @@ export default function themeReducer(state= defaultState, action){
             return {
                 ...state,
                 page: action.payload
+            }
+        case SET_NEW_DEGREE_SYSTEM:
+            return {
+                ...state,
+                degrees: action.payload
             }
         default:
             return state

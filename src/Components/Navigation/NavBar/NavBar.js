@@ -8,7 +8,7 @@ import {faSun, faMoon, faHeart} from '@fortawesome/free-solid-svg-icons';
 import {Button} from "react-bootstrap";
 
 import {useDispatch, useSelector} from "react-redux";
-import {setNewPageUrl, setTheme} from "../../../Store/Reducers/themeReducer";
+import {setNewPageUrl, setTheme, setNewDegreeSystem} from "../../../Store/Reducers/themeReducer";
 import {setFavoriteLocation} from "../../../Store/Reducers/favoriteLocationReducer";
 import {ModalPopUp} from "../../ModalPopUp/ModalPopUp";
 
@@ -18,6 +18,7 @@ const NavBar = () => {
 
     const dispatch = useDispatch();
     const currentTheme = useSelector(state => state.themeStates.theme);
+    const currentDegrees = useSelector(state => state.themeStates.degrees);
     const currentPage = useSelector(state => state.themeStates.page);
     const currentLocation = useSelector(state => state.locationState.location);
     const favoriteLocation = useSelector(state => state.favoritesLocationsState.favoriteLocation);
@@ -36,10 +37,16 @@ const NavBar = () => {
     const changeThemes = () => {
         if(currentTheme === 'light'){
             dispatch(setTheme('dark'));
-            localStorage.setItem('localTheme', 'dark');
         }else{
             dispatch(setTheme('light'));
-            localStorage.setItem('localTheme', 'light');
+        }
+    }
+
+    const changeDegrees = () => {
+        if(currentDegrees === 'fahrenheit'){
+            dispatch(setNewDegreeSystem('celsius'));
+        }else{
+            dispatch(setNewDegreeSystem('fahrenheit'));
         }
     }
 
@@ -85,10 +92,9 @@ const NavBar = () => {
         }
     }
 
-
+    /*<ModalPopUp show={show} title={'Added successfully!'} message={`You have added this city:" ${currentLocation.LocalizedName}" to your favorites`}/>*/
     return (
         <div className={styles.navBlock}>
-            <ModalPopUp show={show} title={'Added successfully!'} message={`You have added this city:" ${currentLocation.LocalizedName}" to your favorites`}/>
             <div className={styles.container}>
                 <div><img src={logo} alt='logo' className={styles.images}/></div>
                 <div>
@@ -98,7 +104,6 @@ const NavBar = () => {
                              className={styles.NavLink} onClick={()=>{changePage('/favorite')}}>Favorite</NavLink>
                 </div>
                 <div>
-                    <Button variant="outline-light" className={styles.btn} onClick={changeThemes}><FontAwesomeIcon icon={(currentTheme === 'light') ? (faSun) : (faMoon)}/></Button>
                     {(currentPage === '/') ? (
                         (statusLocation) ? (
                             <Button variant="outline-light" className={styles.btnSave} onClick={removeLocation}>{(screenWidth <= 420) ? '' : 'added '}
@@ -109,6 +114,9 @@ const NavBar = () => {
                                 <FontAwesomeIcon icon={faHeart}/>
                             </Button>
                         )) : null}
+
+                        <Button variant="outline-light" className={styles.btn} onClick={changeDegrees}>&deg;{(currentDegrees === 'celsius') ? ('C') : ('F')}</Button>
+                        <Button variant="outline-light" className={styles.btn} onClick={changeThemes}><FontAwesomeIcon icon={(currentTheme === 'light') ? (faSun) : (faMoon)}/></Button>
                 </div>
             </div>
         </div>
