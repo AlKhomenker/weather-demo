@@ -6,7 +6,6 @@ import {useDispatch} from "react-redux";
 import {setNewLocation} from "../../Store/Reducers/locationReducer";
 import {ModalPopUp} from "../ModalPopUp/ModalPopUp";
 
-//const localStorage = window.localStorage;
 
 const SearchLocation = () => {
 
@@ -34,16 +33,15 @@ const SearchLocation = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (status) {
-           /* await axios.get(`http://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=%09xrWzkJzTkGOGl6mYcWcDrE5tn9djaGlK&q=${location}`)
+            await axios.get(`http://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=%09xrWzkJzTkGOGl6mYcWcDrE5tn9djaGlK&q=${location}`)
                 .then(res => {
                     dispatch(setNewLocation(res.data[0]));
-                    //localStorage.setItem('currentLocation',JSON.stringify(res.data[0]));
                     setLocation('');
                 }).catch(err => {
                     console.log(err)
                     setShow(true);
                     setLocation(location);
-                });*/
+                });
         }
     }
 

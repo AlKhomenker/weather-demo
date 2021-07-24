@@ -1,7 +1,7 @@
 import {SET_CURRENT_WEATHER, SET_WEATHER_ON5_DAYS} from '../types'
 
 const defaultState = {
-    currentWeather: [{
+    currentWeather: [/*{
         LocalObservationDateTime: "2021-07-23T13:31:00+03:00",
         EpochTime: 1627036260,
         WeatherText: "Clouds and sun",
@@ -23,9 +23,9 @@ const defaultState = {
         },
         MobileLink: "http://www.accuweather.com/en/il/tel-aviv/215854/current-weather/215854?lang=en-us",
         Link: "http://www.accuweather.com/en/il/tel-aviv/215854/current-weather/215854?lang=en-us"
-    }],
+    }*/],
     weatherOn5Days: {
-        Headline: {
+   /*     Headline: {
             EffectiveDate: "2021-07-24T08:00:00+03:00",
             EffectiveEpochDate: 1627102800,
             Severity: 4,
@@ -197,7 +197,7 @@ const defaultState = {
                 MobileLink: "http://www.accuweather.com/en/il/tel-aviv/215854/daily-weather-forecast/215854?day=1&lang=en-us",
                 Link: "http://www.accuweather.com/en/il/tel-aviv/215854/daily-weather-forecast/215854?day=1&lang=en-us"
             }
-        ]
+        ]*/
     }
 };
 

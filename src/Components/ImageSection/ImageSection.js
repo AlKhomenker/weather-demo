@@ -3,6 +3,7 @@ import styles from './ImageSection.module.css';
 import {SearchLocation} from "../SearchLocation/SearchLocation";
 
 import city from '../../Assets/weatherTheme/city.png';
+import Zoom from "react-reveal/Zoom";
 
 const ImageSection = (props) => {
 
@@ -10,7 +11,7 @@ const ImageSection = (props) => {
         <div>
             <div className={styles.header} style={{background:`url(${city})`}}>
                 <div className={styles.txt}>
-                    <h1>{props.header}</h1>
+                    <Zoom cascade>  <h1>{props.header}</h1></Zoom>
                     <div className={styles.quote}>
                         <p>{props.quote}</p>
                         <hr/>

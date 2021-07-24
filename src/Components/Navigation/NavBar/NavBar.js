@@ -12,7 +12,6 @@ import {setNewPageUrl, setTheme, setNewDegreeSystem} from "../../../Store/Reduce
 import {setFavoriteLocation} from "../../../Store/Reducers/favoriteLocationReducer";
 import {ModalPopUp} from "../../ModalPopUp/ModalPopUp";
 
-const localStorage = window.localStorage;
 
 const NavBar = () => {
 
@@ -26,6 +25,7 @@ const NavBar = () => {
     const [statusLocation, setStatusLocation] = useState(false);
     const [screenWidth, setScreenWidth] = useState(0);
     const [show, setShow] = useState(false);
+    const [popUpMessage, setPopUpMessage] = useState({});
 
 
     useEffect(() => {
@@ -67,17 +67,18 @@ const NavBar = () => {
     }, [currentLocation,favoriteLocation]);
 
 
+
     const addLocation = () => {
         let favoriteArr = [];
         for (let i = 0; i< favoriteLocation.length; i++){
             favoriteArr.push(favoriteLocation[i])
         }
-
         if(!favoriteArr.includes(currentLocation)){
             favoriteArr.push(currentLocation);
             dispatch(setFavoriteLocation(favoriteArr));
             setStatusLocation(true);
             setShow(true);
+            setPopUpMessage({title:'Added successfully!', message:`You have added this city: " ${currentLocation.LocalizedName}" to your favorites`});
         }
     }
 
@@ -88,13 +89,15 @@ const NavBar = () => {
                 favoriteLocation.splice(indexElement, 1);
                 dispatch(setFavoriteLocation(favoriteLocation));
                 setStatusLocation(false);
+                setShow(false);
             }
         }
     }
 
-    /*<ModalPopUp show={show} title={'Added successfully!'} message={`You have added this city:" ${currentLocation.LocalizedName}" to your favorites`}/>*/
+
     return (
         <div className={styles.navBlock}>
+            <ModalPopUp show={show} title={popUpMessage.title} message={popUpMessage.message}/>
             <div className={styles.container}>
                 <div><img src={logo} alt='logo' className={styles.images}/></div>
                 <div>
@@ -114,7 +117,6 @@ const NavBar = () => {
                                 <FontAwesomeIcon icon={faHeart}/>
                             </Button>
                         )) : null}
-
                         <Button variant="outline-light" className={styles.btn} onClick={changeDegrees}>&deg;{(currentDegrees === 'celsius') ? ('C') : ('F')}</Button>
                         <Button variant="outline-light" className={styles.btn} onClick={changeThemes}><FontAwesomeIcon icon={(currentTheme === 'light') ? (faSun) : (faMoon)}/></Button>
                 </div>

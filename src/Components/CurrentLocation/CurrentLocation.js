@@ -4,6 +4,8 @@ import {ImageSection} from "../ImageSection/ImageSection";
 import {useSelector} from "react-redux";
 import {ItemDay} from "../ItemDay/ItemDay";
 
+import Fade from "react-reveal/Fade";
+
 let list;
 const CurrentLocation = (props) => {
 
@@ -105,10 +107,12 @@ const CurrentLocation = (props) => {
         <div>
             <ImageSection header={props.header} quote={props.quote}/>
             {(props.data.length > 0) ?
-                (
+                (<Fade left>
                     <div className={styles.weeksBlock}>
-                        {list}
+                         {list}
                     </div>
+                </Fade>
+
                 ) : (
                     <div className={styles.block} style={{color: `${themeColor.color}`}}>
                         <p>There are no saved locations in your list.</p>

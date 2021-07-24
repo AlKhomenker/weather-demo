@@ -6,9 +6,6 @@ import {useDispatch, useSelector} from "react-redux";
 import {setCurrentWeather, setWeatherOn5Days} from "../../Store/Reducers/weatherReducer";
 import {ModalPopUp} from "../../Components/ModalPopUp/ModalPopUp";
 
-
-//const localStorage = window.localStorage;
-
 const Main = () => {
 
     const [days, setDays] = useState([]);
@@ -28,14 +25,13 @@ const Main = () => {
 
 
     const getCurrentWeather = async (key) => {
-        /*await axios.get(`http://dataservice.accuweather.com/currentconditions/v1/${key}?apikey=xrWzkJzTkGOGl6mYcWcDrE5tn9djaGlK`)
+        await axios.get(`http://dataservice.accuweather.com/currentconditions/v1/${key}?apikey=xrWzkJzTkGOGl6mYcWcDrE5tn9djaGlK`)
              .then(res => {
                  dispatch(setCurrentWeather(res.data))
-                 //localStorage.setItem('setCurrentWeather',JSON.stringify(res.data));
              }).catch(err => {
                  console.log(err);
                  setShow(true);
-             });*/
+             });
     }
 
     useEffect(() => {
@@ -50,14 +46,13 @@ const Main = () => {
     }
 
     const getWeatherOn5Days = async (key) => {
-        /*await axios.get(`http://dataservice.accuweather.com/forecasts/v1/daily/5day/${key}?apikey=xrWzkJzTkGOGl6mYcWcDrE5tn9djaGlK`)
+        await axios.get(`http://dataservice.accuweather.com/forecasts/v1/daily/5day/${key}?apikey=xrWzkJzTkGOGl6mYcWcDrE5tn9djaGlK`)
             .then(res => {
                 dispatch(setWeatherOn5Days(res.data))
-                //localStorage.setItem('current5daysWeather',JSON.stringify(res.data));
             }).catch(err => {
                 console.log(err);
                  setShow(true);
-            });*/
+            });
     }
 
     useEffect(() => {
@@ -100,10 +95,10 @@ const Main = () => {
 
 
     return (
-        <div>
-            <CurrentLocation header={currentLocation.LocalizedName} quote='Be the first to know the weather and be in trend!' data={days} currentWeather={weather}/>
-            <ModalPopUp show={show} title={'Something went wrong!'} message={'Please reload the page or try again later.'}/>
-        </div>
+            <div>
+                <CurrentLocation header={currentLocation.LocalizedName} quote='Be the first to know the weather and be in trend!' data={days} currentWeather={weather}/>
+                <ModalPopUp show={show} title={'Something went wrong!'} message={'Please reload the page or try again later.'}/>
+            </div>
     );
 };
 
