@@ -1,35 +1,39 @@
-import {SET_THEME, SET_NEW_URL} from '../types'
+import {SET_NEW_LOCATION} from "../types";
 
-const localStorage = window.localStorage;
 
 const defaultState = {
-    theme:  localStorage.getItem('localTheme'),
-    page: ''
+    location:{
+        Version: 1,
+        Key: "215854",
+        Type: "City",
+        Rank: 31,
+        LocalizedName: "Tel Aviv",
+        Country: {
+            ID: "IL",
+            LocalizedName: "Israel"
+        },
+        AdministrativeArea: {
+            ID: "TA",
+            LocalizedName: "Tel Aviv"
+        }
+    }
 };
 
 
-export const setTheme = (theme) => ({
-    type: SET_THEME,
-    payload: theme
-});
 
-export const setNewPageUrl = (page) => ({
-    type: SET_NEW_URL,
-    payload: page
+
+export const setNewLocation = (location) => ({
+    type: SET_NEW_LOCATION,
+    payload: location
 });
 
 
 export default function themeReducer(state= defaultState, action){
     switch (action.type) {
-        case SET_THEME:
+        case SET_NEW_LOCATION:
             return {
                 ...state,
-                theme: action.payload
-            }
-        case SET_NEW_URL:
-            return {
-                ...state,
-                page: action.payload
+                location: action.payload
             }
         default:
             return state

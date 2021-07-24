@@ -7,28 +7,25 @@
 }
 
 .txt {
-   text-align: center;
-}
-
-.weeksBlock {
     width: 90%;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    margin: 100px auto;
+    text-align: center;
+    color: white;
 }
 
 .quote{
+    width: 50%;
     margin: 0 auto 50px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+hr{
+    border-top: 3px solid white;
 }
 
 /*-------------- Phone --------------*/
 @media only screen and (max-width: 420px) {
-    .weeksBlock {
-        width: 90%;
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-        margin: 100px auto;
+    .quote {
+        width: 100%;
     }
 }

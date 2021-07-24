@@ -1,0 +1,69 @@
+.navBlock{
+    width: 100%;
+    background-color: transparent;
+    position: absolute;
+}
+.container{
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+.NavLink{
+    font-size: 20px;
+    text-transform: uppercase;
+    text-align: center;
+    color: white;
+    padding: 0 20px;
+}
+.NavLink:hover{
+    opacity: 1;
+    color: white;
+    border-bottom: 3px solid rgba(255,255,255,0.3);
+}
+
+.images{
+    width: 100px;
+    height: auto;
+}
+
+.btn{
+    margin-left: 20px;
+    border-radius: .25rem;
+}
+
+.btnSave{
+    margin-left: 20px;
+    border-radius: .25rem;
+    color: white;
+    background-color: #3F83D9;
+    border-color: #3F83D9;
+}
+
+.btnSave:hover{
+    color: white;
+    background-color: #1C5EB3;
+    border-color: #1C5EB3;
+}
+
+
+/*-------------- Phone --------------*/
+@media only screen and (max-width: 420px) {
+    .container{
+        width: 95%;
+    }
+    .NavLink{
+        font-size: 15px;
+    }
+    .images{
+        width: 50px;
+    }
+
+    .btn,.btnSave{
+        font-size: 10px;
+        margin-left: 5px;
+    }
+}

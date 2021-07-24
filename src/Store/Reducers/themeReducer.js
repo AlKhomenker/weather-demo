@@ -1,7 +1,9 @@
 import {SET_THEME, SET_NEW_URL} from '../types'
 
+const localStorage = window.localStorage;
+
 const defaultState = {
-    theme: 'light',
+    theme:  localStorage.getItem('localTheme'),
     page: ''
 };
 
@@ -17,7 +19,7 @@ export const setNewPageUrl = (page) => ({
 });
 
 
-export default function themeReduser(state= defaultState, action){
+export default function themeReducer(state= defaultState, action){
     switch (action.type) {
         case SET_THEME:
             return {

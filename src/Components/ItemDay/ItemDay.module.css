@@ -4,32 +4,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    text-align: center;
     padding: 50px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    position: relative;
-}
-
-.defaultBlock {
-    text-align: center;
-}
-
-.active{
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    background-image: linear-gradient(to bottom right, #FFDBC6, #1F5CAE);
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    opacity: 0;
-    z-index: 10;
-    transition: opacity 1s;
-    cursor: pointer;
-}
-.active:hover{
-    opacity: 1;
 }
 
 

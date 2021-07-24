@@ -1,34 +1,24 @@
-import {SET_THEME, SET_NEW_URL} from '../types'
+import {SET_FAVORITE_LOCATION} from '../types'
 
 
 const defaultState = {
-    theme:  localStorage.getItem('localTheme'),
-    page: ''
+    favoriteLocation: []
 };
 
 
-export const setTheme = (theme) => ({
-    type: SET_THEME,
-    payload: theme
-});
-
-export const setNewPageUrl = (page) => ({
-    type: SET_NEW_URL,
-    payload: page
+export const setFavoriteLocation = (newLocation) => ({
+    type: SET_FAVORITE_LOCATION,
+    payload: newLocation
 });
 
 
-export default function themeReducer(state= defaultState, action){
+
+export default function favoriteLocationReducer(state= defaultState, action){
     switch (action.type) {
-        case SET_THEME:
+        case SET_FAVORITE_LOCATION:
             return {
                 ...state,
-                theme: action.payload
-            }
-        case SET_NEW_URL:
-            return {
-                ...state,
-                page: action.payload
+                favoriteLocation: action.payload
             }
         default:
             return state
