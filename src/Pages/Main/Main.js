@@ -25,7 +25,7 @@ const Main = () => {
 
 
     const getCurrentWeather = async (key) => {
-        await axios.get(`http://dataservice.accuweather.com/currentconditions/v1/${key}?apikey=xrWzkJzTkGOGl6mYcWcDrE5tn9djaGlK`)
+        await axios.get(`https://dataservice.accuweather.com/currentconditions/v1/${key}?apikey=xrWzkJzTkGOGl6mYcWcDrE5tn9djaGlK`)
              .then(res => {
                  dispatch(setCurrentWeather(res.data))
              }).catch(err => {
@@ -46,7 +46,7 @@ const Main = () => {
     }
 
     const getWeatherOn5Days = async (key) => {
-        await axios.get(`http://dataservice.accuweather.com/forecasts/v1/daily/5day/${key}?apikey=xrWzkJzTkGOGl6mYcWcDrE5tn9djaGlK`)
+        await axios.get(`https://dataservice.accuweather.com/forecasts/v1/daily/5day/${key}?apikey=xrWzkJzTkGOGl6mYcWcDrE5tn9djaGlK`)
             .then(res => {
                 dispatch(setWeatherOn5Days(res.data))
             }).catch(err => {

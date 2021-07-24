@@ -33,7 +33,7 @@ const SearchLocation = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (status) {
-            await axios.get(`http://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=%09xrWzkJzTkGOGl6mYcWcDrE5tn9djaGlK&q=${location}`)
+            await axios.get(`https://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=%09xrWzkJzTkGOGl6mYcWcDrE5tn9djaGlK&q=${location}`)
                 .then(res => {
                     dispatch(setNewLocation(res.data[0]));
                     setLocation('');

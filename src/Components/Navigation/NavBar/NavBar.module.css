@@ -57,7 +57,7 @@
         width: 95%;
     }
     .NavLink{
-        font-size: 15px;
+        font-size: 13px;
     }
     .images{
         width: 50px;
@@ -65,6 +65,6 @@
 
     .btn,.btnSave{
         font-size: 10px;
-        margin-left: 5px;
+        margin-left: 3px;
     }
 }
