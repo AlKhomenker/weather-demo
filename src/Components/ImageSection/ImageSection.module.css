@@ -1,0 +1,34 @@
+.header {
+    width: 100%;
+    height: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.txt {
+   text-align: center;
+}
+
+.weeksBlock {
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin: 100px auto;
+}
+
+.quote{
+    margin: 0 auto 50px;
+}
+
+/*-------------- Phone --------------*/
+@media only screen and (max-width: 420px) {
+    .weeksBlock {
+        width: 90%;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin: 100px auto;
+    }
+}
