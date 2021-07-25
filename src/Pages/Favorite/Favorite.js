@@ -16,7 +16,7 @@ const Favorite = () => {
     const addNewFavoriteLocation = (data) => {
         let arr = [];
         let newDataLocation = {};
-        if(Object.keys(data).length > 0){
+        if(Object.keys(data).length > 0 && currentWeather.length > 0){
             for (let i = 0; i< data.length; i++) {
                 newDataLocation = {
                     tempC: currentWeather[0].Temperature.Metric.Value,
@@ -25,6 +25,18 @@ const Favorite = () => {
                     city: data[i].LocalizedName
                 };
                 arr.push(newDataLocation)
+            }
+        }else{
+            if(Object.keys(data).length > 0 && currentWeather.length === 0){
+                for (let i = 0; i< data.length; i++) {
+                    newDataLocation = {
+                        tempC: 'not definitely',
+                        tempF: 'not definitely',
+                        weatherText: 'not definitely',
+                        city: data[i].LocalizedName
+                    };
+                    arr.push(newDataLocation)
+                }
             }
         }
         setfavorite(arr);
