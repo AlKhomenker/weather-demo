@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import styles from './ItemDay.module.css';
 import axios from "axios";
+import API_KEY from '../../Store/apiKey';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faSun, faMoon} from '@fortawesome/free-solid-svg-icons';
 import {Button} from "react-bootstrap";
@@ -21,7 +22,7 @@ const ItemDay = (props) => {
 
     const getChooseLocation = async (location,page) => {
         dispatch(setNewPageUrl(page));
-        await axios.get(`https://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=%09xrWzkJzTkGOGl6mYcWcDrE5tn9djaGlK&q=${location}`)
+        await axios.get(`https://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=%${API_KEY}&q=${location}`)
             .then(res => {
                 dispatch(setNewLocation(res.data[0]))
             }).catch(err => {

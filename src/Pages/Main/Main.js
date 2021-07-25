@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {CurrentLocation} from "../../Components/CurrentLocation/CurrentLocation";
 
 import axios from "axios";
+import API_KEY from '../../Store/apiKey';
 import {useDispatch, useSelector} from "react-redux";
 import {setCurrentWeather, setWeatherOn5Days} from "../../Store/Reducers/weatherReducer";
 import {ModalPopUp} from "../../Components/ModalPopUp/ModalPopUp";
@@ -25,7 +26,7 @@ const Main = () => {
 
 
     const getCurrentWeather = async (key) => {
-        await axios.get(`https://dataservice.accuweather.com/currentconditions/v1/${key}?apikey=xrWzkJzTkGOGl6mYcWcDrE5tn9djaGlK`)
+        await axios.get(`https://dataservice.accuweather.com/currentconditions/v1/${key}?apikey=${API_KEY}`)
              .then(res => {
                  dispatch(setCurrentWeather(res.data))
              }).catch(err => {
@@ -46,7 +47,7 @@ const Main = () => {
     }
 
     const getWeatherOn5Days = async (key) => {
-        await axios.get(`https://dataservice.accuweather.com/forecasts/v1/daily/5day/${key}?apikey=xrWzkJzTkGOGl6mYcWcDrE5tn9djaGlK`)
+        await axios.get(`https://dataservice.accuweather.com/forecasts/v1/daily/5day/${key}?apikey=${API_KEY}`)
             .then(res => {
                 dispatch(setWeatherOn5Days(res.data))
             }).catch(err => {

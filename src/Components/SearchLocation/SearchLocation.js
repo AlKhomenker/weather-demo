@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import styles from './SearchLocation.module.css';
 import {Form, InputGroup, FormControl, Button} from 'react-bootstrap';
 import axios from "axios";
+import API_KEY from '../../Store/apiKey';
 import {useDispatch} from "react-redux";
 import {setNewLocation} from "../../Store/Reducers/locationReducer";
 import {ModalPopUp} from "../ModalPopUp/ModalPopUp";
@@ -33,7 +34,7 @@ const SearchLocation = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (status) {
-            await axios.get(`https://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=%09xrWzkJzTkGOGl6mYcWcDrE5tn9djaGlK&q=${location}`)
+            await axios.get(`https://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=%${API_KEY}&q=${location}`)
                 .then(res => {
                     dispatch(setNewLocation(res.data[0]));
                     setLocation('');
