@@ -22,7 +22,7 @@ const ItemDay = (props) => {
 
     const getChooseLocation = async (location,page) => {
         dispatch(setNewPageUrl(page));
-        await axios.get(`https://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=%${API_KEY}&q=${location}`)
+        await axios.get(`https://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=${API_KEY}&q=${location}`)
             .then(res => {
                 dispatch(setNewLocation(res.data[0]))
             }).catch(err => {
